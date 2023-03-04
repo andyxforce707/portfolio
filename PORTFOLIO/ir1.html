@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - Irul</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: arial;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        max-width: 75%;
+        margin: 25px auto;
+        background-color: rgb(247, 247, 247);
+        box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.25);
+        position: relative;
+      }
+
+      .container {
+        width: 100%;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        width: 100%;
+        background: linear-gradient(to bottom, rgb(0, 132, 255), white);
+        border-top: 2px solid darkblue;
+      }
+
+      .container .header .img {
+        border-radius: 50%;
+        border: 2px solid white;
+        margin: 100px 100px 10px;
+        transition: 0.2s;
+      }
+      .container .header .img:hover {
+        transform: scale(1.02);
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        cursor: container;
+      }
+
+      .container .header .list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        gap: 20px;
+        margin-top: 30px;
+        flex-wrap: wrap;
+      }
+
+      .container .header .list li {
+        margin: 0 10px;
+        list-style: none;
+        padding: 10px;
+      }
+
+      .container .header .list li a {
+        text-decoration: none;
+        color: #222;
+        padding-bottom: 10px;
+        padding-right: 5px;
+        padding-left: 5px;
+        transition: 0.4s;
+        transform-origin: right;
+      }
+
+      .container .header .list li a:hover {
+        color: black;
+        border-bottom: 1px solid black;
+      }
+
+      /* MAIN */
+
+      .container .main {
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container .main .tentangsaya {
+        padding: 20px;
+        border-radius: 2px;
+        margin-top: 15px;
+        background: linear-gradient(to top, white, rgb(240, 251, 255));
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .container .main .tentangsaya p {
+        text-indent: 30px;
+        margin: 20px 0;
+      }
+
+      .container .main .tentangsaya .contact {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-top: 30px;
+      }
+
+      .container .main .tentangsaya .contact h3 {
+        padding: 10px 5px;
+        border-bottom: 1px solid black;
+        margin-bottom: 15px;
+      }
+
+      .container .main .tentangsaya .contact a {
+        text-decoration: none;
+        color: #111;
+      }
+
+      .container .main .tentangsaya .contact a:hover {
+        opacity: 0.8;
+      }
+
+      /* MAIN > profil */
+
+      .container .main h2 {
+        margin: 40px 0 10px;
+        padding: 10px 50px;
+        backdrop-filter: blur(10px);
+        display: block;
+        width: 100%;
+        text-align: center;
+        color: rgb(80, 185, 255);
+        letter-spacing: 0.05em;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .container .main h2:first-child {
+        color: rgb(0, 132, 255);
+      }
+
+      .container .main h2:hover {
+        color: rgb(0, 132, 255);
+      }
+
+      .container .main .profil {
+        display: none;
+        gap: 10;
+        justify-content: space-evenly;
+        align-items: start;
+        width: 100%;
+        margin: 20px 0;
+        padding: 20px;
+        border-radius: 2px;
+        background: linear-gradient(to top, white, rgb(240, 251, 255));
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        opacity: 0;
+        transition: 0.5s;
+      }
+
+      .container .main .profil .liststyle ul li {
+        list-style: none;
+        margin: 5px 0;
+      }
+
+      .container .main .profil .data {
+        flex-grow: 0.5;
+      }
+
+      .container .main .profil .equal {
+        flex-grow: 0.1;
+        font-weight: bold;
+      }
+
+      .container .main .profil .value {
+        flex-grow: 4;
+      }
+
+      /* MAIN > kemampuan */
+      .container .main .kemampuan {
+        display: none;
+        gap: 10;
+        justify-content: space-evenly;
+        align-items: start;
+        width: 100%;
+        margin: 20px 0;
+        padding: 20px;
+        border-radius: 2px;
+        background: linear-gradient(to top, white, rgb(240, 251, 255));
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .container .main .kemampuan .liststyle ul li {
+        list-style: none;
+        margin: 5px 0;
+      }
+
+      .container .main .kemampuan .data {
+        flex-grow: 0.5;
+      }
+      .container .main .kemampuan .value {
+        flex-grow: 4.5;
+      }
+
+      /* MAIN > pengalaman */
+
+      .container .main .pengalaman {
+        width: 100%;
+        display: none;
+        margin-top: 15px;
+        flex-direction: column;
+        padding: 20px;
+        border-radius: 2px;
+        background: linear-gradient(to top, white, rgb(240, 251, 255));
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .container .main .pengalaman .perusahaan ul {
+        text-indent: 20px;
+        margin: 20px 5px;
+      }
+      .container .main .pengalaman .perusahaan ul li {
+        list-style: none;
+        margin: 5px 0;
+        font-weight: lighter;
+      }
+
+      .container .main .pengalaman .perusahaan .h6-style {
+        margin: 10px 0;
+        font-size: 0.8em;
+      }
+
+      /* MAIN > pendidikan */
+      .container .main .pendidikan {
+        width: 100%;
+        padding: 20px;
+        border-radius: 2px;
+        margin-top: 15px;
+        background: linear-gradient(to top, white, rgb(240, 251, 255));
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        display: none;
+        flex-direction: column;
+      }
+      .container .main .pendidikan .sekolah {
+        margin: 12.5px 0;
+      }
+
+      /* FOOTER */
+      .container .footer {
+        width: 100%;
+        padding: 100px;
+        background: linear-gradient(to top, rgb(0, 113, 219), white);
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        align-items: center;
+        justify-content: center;
+      }
+      .container .footer h5 {
+        padding: 0;
+        font-size: 0.9em;
+      }
+      .container .footer p {
+        padding: 0;
+        font-size: 0.8em;
+      }
+
+      .container .footer p a {
+        text-decoration: none;
+        color: darkblue;
+      }
+
+      .container .footer em {
+        padding: 0;
+        font-size: 0.8em;
+      }
+
+      /* class muncul*/
+      .container .main .profil.muncul {
+        display: flex;
+        opacity: 1;
+        transition: 0.5s;
+      }
+
+      .container .main .kemampuan.muncul {
+        display: flex;
+        transition: ease 0.4s;
+      }
+
+      .container .main .pengalaman.muncul {
+        display: flex;
+        transition: ease 0.4s;
+      }
+
+      .container .main .pendidikan.muncul {
+        display: flex;
+        transition: ease 0.4s;
+      }
+
+      /* screen breakpoint */
+      @media screen and (max-width: 576px) {
+        body {
+          max-width: 100%;
+          margin: 0 auto;
+        }
+
+        .container .header .list {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          gap: 5px;
+          margin-top: 25px;
+        }
+
+        .container .main .tentangsaya p {
+          margin: 20px 0;
+          text-align: center;
+          text-indent: 0px;
+        }
+        .container .header .list li {
+          margin-top: -10px;
+        }
+        .container .header .list li:hover {
+          border: none;
+        }
+      }
+
+      /* dark theme */
+      body .darktheme {
+        width: 120px;
+        height: 50px;
+        border-radius: 24px;
+        backdrop-filter: blur(10px);
+        color: white;
+        position: fixed;
+        left: 50px;
+        bottom: 50px;
+        z-index: 99999;
+        background-color: blue;
+        text-align: center;
+        line-height: 50px;
+        text-decoration: none;
+        font-style: italic;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+        transition: 0.4s;
+      }
+      body .darktheme:hover {
+        transform: scale(1.05);
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <label for="" style="color: blue; display: block; text-align: center; margin: 10px auto; padding: 10px">Enjoy this music,please.</label>
+    <audio controls style="display: block; text-align: center; margin: 10px auto">
+      <source src="a7x - lost.mp3" type="audio/mpeg" />
+    </audio>
+    <div class="container">
+      <div class="header">
+        <img class="img" src="IMG.jpg" alt="Irul" />
+        <h3 class="myname">Irul</h3>
+        <span class="skill">Musician</span>
+        <ul class="list">
+          <li><a href="#tentangsaya">TENTANG SAYA</a></li>
+          <li><a href="#profil">PROFIL</a></li>
+          <li><a href="#kemampuan">KEMAMPUAN</a></li>
+          <li><a href="#pengalaman">PENGALAMAN</a></li>
+          <li><a href="#pendidikan">PENDIDIKAN</a></li>
+        </ul>
+      </div>
+      <!-- tentang saya -->
+      <div class="main">
+        <h2>Tentang Saya</h2>
+        <div id="tentangsaya" class="tentangsaya">
+          <p>
+            Berpengalaman di dunia Permusikan. Lulusan Fakultas <em>Universitas Indonesia <stong>( fake, just for fun! )</stong></em> dengan IPK 3.85 Teknik Informatika pada tahun 2021.
+          </p>
+          <div class="contact">
+            <h3>Hubungi Saya</h3>
+            <a href="#" style="color: green">WhatsApp</a>
+            <a href="#" style="color: red">Email</a>
+            <a href="https://instagram.com/andyxforce" style="color: purple">Instagram</a>
+          </div>
+        </div>
+        <!-- profil -->
+        <h2>Profil</h2>
+        <div id="profil" class="profil">
+          <div class="data liststyle">
+            <ul>
+              <li>Nama</li>
+              <li>Umur</li>
+              <li>Pendidikan</li>
+            </ul>
+          </div>
+          <div class="equal liststyle">
+            <ul>
+              <li>:</li>
+              <li>:</li>
+              <li>:</li>
+            </ul>
+          </div>
+          <div class="value liststyle">
+            <ul>
+              <li>Irul</li>
+              <li>Unknown</li>
+              <li>IT</li>
+            </ul>
+          </div>
+        </div>
+        <!-- kemampuan -->
+        <h2>Kemampuan</h2>
+        <div id="kemampuan" class="kemampuan">
+          <div class="data liststyle">
+            <ul>
+              <li>Ms.Word</li>
+              <li>Ms.Excel</li>
+              <li>Music</li>
+              <li>Html</li>
+              <li>Css</li>
+              <li>JavaScript</li>
+            </ul>
+          </div>
+          <div class="value liststyle">
+            <ul>
+              <li><meter style="width: 200px" max="100" min="0" value="80"></meter></li>
+              <li><meter style="width: 200px" max="100" min="0" value="80"></meter></li>
+              <li><meter style="width: 200px" max="100" min="0" value="90"></meter></li>
+              <li><meter style="width: 200px" max="100" min="0" value="75"></meter></li>
+              <li><meter style="width: 200px" max="100" min="0" value="80"></meter></li>
+              <li><meter style="width: 200px" max="100" min="0" value="65"></meter></li>
+            </ul>
+          </div>
+        </div>
+        <!-- pengalaman -->
+        <h2>Pengalaman Kerja</h2>
+        <div id="pengalaman" class="pengalaman">
+          <div class="perusahaan">
+            <h3>1. SpaceY Indonesia ( perusahaan fiktif )</h3>
+            <h5>Web Designer ( Januari 2021 - Januari 2022 )</h5>
+            <h6 class="h6-style">Job Desk :</h6>
+            <ul>
+              <li>Design Website</li>
+              <li>Membuat Website</li>
+              <li>Mengupdate Website</li>
+            </ul>
+          </div>
+          <div class="perusahaan">
+            <h3>2. X-day Company ( perusahaan fiktif )</h3>
+            <h5>Software Engineer( Maret 2021 - Maret 2023 )</h5>
+            <h6 class="h6-style">Job Desk :</h6>
+            <ul>
+              <li>Membuat Aplikasi Android</li>
+              <li>Mengembangkan Software</li>
+              <li>Membuat Rancangan UI/UX Android</li>
+            </ul>
+          </div>
+        </div>
+        <!-- pendidikan -->
+        <h2>Pendidikan</h2>
+        <div id="pendidikan" class="pendidikan">
+          <div class="sekolah">
+            <h3>Sekolah Dasar</h3>
+            <h5>SD Negeri 1 Baran ( 2004 - 2010 )</h5>
+          </div>
+          <div class="sekolah">
+            <h3>Sekolah Menengah Pertama</h3>
+            <h5>SMP Negeri 1 Nguter ( 2010 - 2013 )</h5>
+          </div>
+          <div class="sekolah">
+            <h3>Sekolah Menengah Kejuruan</h3>
+            <h5>SMK Muhammadiyah 2 Sukoharjo ( 2013 - 2016 )</h5>
+          </div>
+          <div class="sekolah">
+            <h3>Fakultas ( fake, just for fun )</h3>
+            <h5>Universitas Indonesia ( 2016 - 2021 )</h5>
+          </div>
+        </div>
+      </div>
+      <!-- footer -->
+      <div class="footer">
+        <h5>A portfolio Website</h5>
+        <p>By <a href="https://instagram.com/andyxforce">@andyxforce</a></p>
+        <em>Copyright 2023</em>
+      </div>
+    </div>
+    <a href="ir2.html" class="darktheme">Dark Theme</a>
+    <script src="script.js"></script>
+  </body>
+</html>

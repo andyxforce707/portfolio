@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Login</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: arial;
+      }
+
+      body {
+        margin: 10px auto;
+      }
+
+      section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        background: linear-gradient(to bottom right, red, blue);
+        background-position: center;
+        background-size: cover;
+        flex-direction: column;
+        padding: 10px 0;
+        min-height: 100vh;
+      }
+
+      .form-box {
+        position: relative;
+        width: 400px;
+        backdrop-filter: blur(5px);
+        background: transparent;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 30px 0;
+      }
+
+      h2 {
+        font-size: 2em;
+        color: #fff;
+        text-align: center;
+        padding-top: 5px;
+      }
+
+      .inputbox {
+        position: relative;
+        margin: 20px;
+        width: 310px;
+        border-bottom: 2px solid #fff;
+        height: 60px;
+      }
+
+      .inputbox label {
+        position: absolute;
+        top: 50%;
+        left: 5px;
+        transform: translateY(-10%);
+        color: #fff;
+        pointer-events: none;
+        transition: 0.5s;
+        letter-spacing: 0.1em;
+        font-size: 1.05em;
+      }
+
+      input:focus ~ label {
+        top: 5px;
+      }
+      input:valid ~ label {
+        top: 5px;
+      }
+
+      .inputbox input {
+        width: 100%;
+        height: 50px;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        font-size: 1.02em;
+        padding: 15px 0 10px;
+        color: #fff;
+        text-align: center;
+      }
+
+      /* .inputbox ion-icon */
+
+      .forget {
+        margin: -5px 0 15px;
+        font-size: 0.9em;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+      }
+
+      .forget label input {
+        margin-right: 3px;
+      }
+
+      .forget label a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .forget label a:hover {
+        text-decoration: underline;
+      }
+
+      button {
+        width: 90%;
+        height: 40px;
+        background-color: #fff;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        font-size: 1em;
+        font-weight: bold;
+        border-radius: 40px;
+        margin-left: 18px;
+        margin-top: 20px;
+      }
+
+      .register,
+      .login {
+        font-size: 0.9em;
+        color: #fff;
+        text-align: center;
+        margin: 25px 0 10px;
+      }
+
+      .register p a,
+      .login p a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: bold;
+      }
+
+      .register p a:hover,
+      .login p a:hover {
+        text-decoration: underline;
+      }
+
+      /* register */
+      .form-box .form-value.reg {
+        display: none;
+      }
+
+      .form-box .form-value.reg.show {
+        display: flex;
+      }
+
+      /* screen breakpoint */
+      @media screen and (max-width: 576px) {
+        section {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="form-box">
+        <!-- login -->
+        <div class="form-value login">
+          <form action="">
+            <h2>Login</h2>
+            <div class="inputbox">
+              <input type="text" required />
+              <label for="">email</label>
+            </div>
+            <div class="inputbox">
+              <input type="password" required />
+              <label for="">password</label>
+            </div>
+            <div class="forget">
+              <label for=""><input type="checkbox" />Remember Me | <a href="#">Forget Password?</a></label>
+            </div>
+            <button><a href="ir1.html" style="text-decoration: none; color: red">Log in</a></button>
+            <div class="register">
+              <p>Don't have an Account? <a href="#">Register</a></p>
+            </div>
+          </form>
+        </div>
+
+        <!-- register -->
+        <div class="form-value reg">
+          <form action="">
+            <h2>Register</h2>
+            <div class="inputbox">
+              <input type="text" required />
+              <label for="">username</label>
+            </div>
+            <div class="inputbox">
+              <input type="text" required />
+              <label for="">email</label>
+            </div>
+            <div class="inputbox">
+              <input type="password" required />
+              <label for="">password</label>
+            </div>
+            <div class="inputbox">
+              <input type="password" required />
+              <label for="">confirm password</label>
+            </div>
+            <button>Register</button>
+            <div class="login">
+              <p>Already a Member? <a href="#">Log in</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script>
+    // register button
+    const tombolRegister = document.querySelector('section .form-box .form-value.login form .register p a');
+
+    // login button
+    const tombolLogin = document.querySelector('section .form-box .form-value.reg form .login p a');
+
+    // register section
+    const register = document.querySelector('section .form-box .form-value.reg');
+
+    // login section
+    const sectionLogin = document.querySelector('section .form-box .form-value.login');
+
+    // If Register button is click
+    tombolRegister.addEventListener('click', () => {
+      register.classList.add('show');
+      sectionLogin.style.display = 'none';
+    });
+
+    // If Login button is click
+    tombolLogin.addEventListener('click', () => {
+      register.classList.remove('show');
+      sectionLogin.style.display = 'flex';
+    });
+  </script>
+</html>
